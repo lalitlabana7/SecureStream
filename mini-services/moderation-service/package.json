@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "bun --hot index.ts",
     "build": "echo 'No build step required'",
-    "start": "node index.ts"
+    "start": "bun index.ts"
   },
   "dependencies": {
     "z-ai-web-dev-sdk": "^0.0.17"
