@@ -2,7 +2,9 @@
   "name": "securestream-signaling",
   "version": "1.0.0",
   "scripts": {
-    "dev": "bun --hot index.ts"
+    "dev": "bun --hot index.ts",
+    "build": "echo 'No build step required'",
+    "start": "node index.ts"
   },
   "dependencies": {
     "socket.io": "^4.8.0"

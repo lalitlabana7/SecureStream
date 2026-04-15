@@ -2,7 +2,9 @@
   "name": "securestream-moderation",
   "version": "1.0.0",
   "scripts": {
-    "dev": "bun --hot index.ts"
+    "dev": "bun --hot index.ts",
+    "build": "echo 'No build step required'",
+    "start": "node index.ts"
   },
   "dependencies": {
     "z-ai-web-dev-sdk": "^0.0.17"
