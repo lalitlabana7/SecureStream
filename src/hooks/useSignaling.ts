@@ -20,7 +20,7 @@ export function useSignaling(): UseSignalingReturn {
   const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
-    const newSocket = io('/socket.io/?XTransformPort=3003', {
+    const newSocket =  io(process.env.NEXT_PUBLIC_SIGNALING_URL || '/socket.io/?XTransformPort=3003', {
       transports: ['websocket', 'polling'],
       forceNew: true,
       reconnection: true,
