@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model TrustRecord {
+  id        String   @id @default(cuid())
+  sessionId String   @unique
+  score     Int      @default(100)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  blacklists  Blacklist[]
+  modEvents   ModerationEvent[]
+}
+
+model Blacklist {
+  id        String   @id @default(cuid())
+  sessionId String
+  reason    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  trustRecord TrustRecord @relation(fields: [sessionId], references: [sessionId])
+}
+
+model ModerationEvent {
+  id         String   @id @default(cuid())
+  sessionId  String
+  roomId     String
+  riskLevel  String
+  action     String
+  reasons    String   @default("[]")
+  createdAt  DateTime @default(now())
+
+  trustRecord TrustRecord @relation(fields: [sessionId], references: [sessionId])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String?
+  published Boolean  @default(false)
+  authorId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,0 +1,27 @@
+{
+  "name": "SecureStream",
+  "short_name": "SecureStream",
+  "description": "Privacy-first anonymous video chat with AI moderation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#059669",
+  "orientation": "portrait-primary",
+  "categories": ["social", "communication"],
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
