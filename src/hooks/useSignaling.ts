@@ -20,14 +20,15 @@ export function useSignaling(): UseSignalingReturn {
   const socketRef = useRef<Socket | null>(null);
 
   useEffect(() => {
-    const newSocket =  io(process.env.NEXT_PUBLIC_SIGNALING_URL || '/socket.io/?XTransformPort=3003', {
-      transports: ['websocket', 'polling'],
-      forceNew: true,
-      reconnection: true,
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000,
-      timeout: 10000,
-    });
+const signalingUrl = process.env.NEXT_PUBLIC_SIGNALING_URL || '/socket.io/?XTransformPort=3003';
+const newSocket = io(signalingUrl, {
+  transports: ['websocket', 'polling'],
+  forceNew: true,
+  reconnection: true,
+  reconnectionAttempts: 10,
+  reconnectionDelay: 2000,
+  timeout: 20000,
+});
 
     socketRef.current = newSocket;
 
